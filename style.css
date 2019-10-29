@@ -1,0 +1,85 @@
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    margin: 0;
+}
+
+.header {
+    width: 100vw;
+    height: 10%;
+    position: fixed;
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: space-around;
+    background-color: bisque;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header .image {
+    width: 6%;
+    height: 80%;
+    margin-right: 5%;
+}
+
+.header .text {
+    font-size: 40px;
+    width: 25%;
+}
+
+.header .buttons {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    justify-content: inherit;
+    align-items: center;
+}
+
+.header .button {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 5px;
+    box-shadow: 5px 2px 2px black;
+}
+
+.header .buttons .button {
+    width: 33%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 5px;
+    box-shadow: 5px 2px 2px black;
+}
+
+.container {
+    display: flex;
+}
+
+.footer {
+    width: 100vw;
+    height: 10%;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lemonchiffon;
+}
+
+.footer .image {
+    width: 5%;
+    height: 86%;
+}
+
+.footer .image-2 {
+    width: 6%;
+    height: 90%;
+}
