@@ -2,13 +2,32 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Cliente</title>
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cartola-icone.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+<title>Cartola</title>
 </head>
 
 <body>
+<div class="header"> 
+       
+       <a href="index.html">
+           <div class="button"><span>HOME</span></div>
+       </a>
+       <a href="produtos.php">
+           <div class="button"><span>PRODUTOS</span></div>
+       </a>
+       <strong class="text">VISTA-SE BEM</strong>
+       <a href="cliente.php">
+           <div class="button"><span>CLIENTES</span></div>
+       </a>
+    
+   <img class="image" src="./images/cartola-icone.png" alt="cartola-icone">
+   </div>
 <form action="" method="post" enctype="multipart/form-data">
 Nome:<input type="text" name="nome" /><br />
-Valor:<input type="text" name="email" /><br />
+Valor:<input type="text" name="valor" /><br />
 <input type="submit" name="Incluir" value="Incluir" />
 <input type="reset" name="Limpar" value="Limpar"/>
 
@@ -57,79 +76,33 @@ placeholder="registro">
 			   <td>valor</td>";
         for($i=0;$i<$num_linhas;$i++){
             $mostra_tabela=mysqli_fetch_array($mostra);
-		    $codigo= $mostra_tabela['codigo'];
+		    $codigo= $mostra_tabela['id_item'];
             echo"<tr><td>Excluir $codigo</td>";
             echo "<td>$codigo</td>";
-            $nome=$mostra_tabela['nome'];
-            echo"<td>$nome</td>";
-            $email=$mostra_tabela['email'];
-            echo "<td>$email</td>";
-            $cidade=$mostra_tabela['senha'];
-            echo "<td>$senha</td>";
-            echo"<td><a href='altera.php?codigo=$codigo'>Alteração</a></td>";
+            $descricao=$mostra_tabela['descricao'];
+            echo"<td>$descricao</td>";
+            $valor=$mostra_tabela['valor'];
+            echo "<td>$valor</td>";
+            echo"<td><a href='altera.php?id_item=$codigo'>Alteração</a></td>";
             echo "</tr>";    
         }
         echo "</table>";
 
 
 
-/*
-	echo"<form action=\"exclui_checkbox.php\" method=\"get\">";
-	echo"<table border=\"1\">";
-	echo"<tr><td>Excluir</td>
-			<td>Código</td>
-	          <td>Nome</td>
-			   <td>Email</td>
-			   <td>Cidade</td>
-			   <td>Foto</td>
-			    <td>Alteração</td></tr>";
-     
-	for($i=0;$i<$num_linhas;$i++)
-	{	$mostra_tabela=mysqli_fetch_array($mostra);
-		$codigo= $mostra_tabela['codigo'];
-		echo"<tr>";
-		echo"<td><input type='checkbox' 
-		name=cod".$i." value='$codigo'></td>";
-		echo"<td>";
-		echo $codigo;
-		echo"</td>";
-		echo"<td>";
-		echo $mostra_tabela['nome'];
-		echo"</td>";
-		echo"<td>";
-		echo $mostra_tabela['email'];
-		echo"</td>";
-		echo"<td>";
-		echo $mostra_tabela['cidade'];
-		echo"</td>";
-		echo"<td>";
-		echo $mostra_tabela['foto'];
-		echo"</td>";
-		echo"<td><a href=\"altera.php?codigo=$codigo\">Alterar</a></td></tr>";
-				
-	}
-
-	echo"<tr><tr><td colspan=\"6\" align='center'>
-		<input type=\"hidden\" name=\"linhas\" value=\"$num_linhas\">
-	<input type=\"submit\" name=\"Excluir\" value=\"Excluir\"></td></tr>";
-
-	echo"</form></table>";
-}*/
 
 
     }
     if(isset($_POST['Excluir'])){
-        //código para excluir
-        // precisamos de um id
         $id=$_POST['registro'];
         $db=mysqli_select_db($conexao,$banco);
-        $resultado = mysqli_query ($conexao,"select * from clientes where codigo=$id");
+        $resultado = mysqli_query ($conexao,"select * from item where id_item=$id");
         if ($resultado==false) {
              echo "Erro na query";
              exit;
          }
         if (mysqli_num_rows($resultado) != 0) {
-             mysqli_query ($conexao,"delete from clientes where codigo=$id");
+             mysqli_query ($conexao,"delete from item where id_item=$id");
              echo "<script>alert(\"Registro excluído com sucesso!\")
              </script>";
          }

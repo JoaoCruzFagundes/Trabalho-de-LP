@@ -2,7 +2,7 @@
     $servidor='localhost';
     $usuario='root';
     $senha='';
-    $banco='teste';
+    $banco='cartola';
     $conexao=mysqli_connect($servidor,$usuario,$senha,$banco);
    
 ?>
